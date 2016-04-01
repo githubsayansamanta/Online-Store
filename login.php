@@ -1,9 +1,9 @@
 <html>
-<head>
-<title>login</title>
-</head>
-<body>
+    <head>
+        <title>login</title>
+    </head>
+    <body bgcolor = "#289002" text = "white">
 Name: <?php echo $_POST["f_name"]; ?> <br>
-Passwd: <?php echo $_POST["password"]; ?> <br>
+Password: <?php echo $_POST["password"]; ?> <br>
 </body>
 </html>
