@@ -23,6 +23,7 @@
             $fieldinfo = mysqli_fetch_row($ret);
             printf("<br>Welcome: %s", $fieldinfo[0]);
             ?></h3>
-         <a href="index.html" target="_blank">Log Out</a>
+        <a href="productview.html" target="_blank">Visit Online Store</a><br>
+        <a href="index.html" target="_blank">Log Out</a>
     </body>
 </html>
