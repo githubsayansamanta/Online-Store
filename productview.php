@@ -25,12 +25,70 @@
     </head>
     <body bgcolor="#E6E6FA" text = "black">
     <center><div><h1>Product Store</h1></div></center>
-    <form action = "productbuy.php" method = "post">
+
     <fieldset>
         <table cellpadding="10" cellspacing="10" style="width:100%">
-            <tr>
+            <?php
+            $db_host = "localhost";
+            $db_user = "root";
+            $db_password = "";
+            $DB_nm = "Online_Store";
+            //create connection
+            $con = mysqli_connect($db_host, $db_user, $db_password, $DB_nm);
+            $sql = "select * from product_info";
+            $result = mysqli_query($con, $sql);
+            if ($result) {
+                while ($row = mysqli_fetch_row($result)) {
+                    echo '<form action = "productbuy.php" method = "post">';
+                    echo '<tr> <td> <p align="middle"><font size="5" color="black">';
+//                        echo $row[0]. "<br>";
+                    echo '<input type="hidden" name ="pro_id" value = "' . $row[0] . '"<br>';
+                    echo 'Book Name : ' . $row[1] . "<br>";
+//                        echo $row[3]. "<br>";
+                    //echo $row[4]. "<br>";
+                    echo '<img src="' . $row[4] . '" width="200" height="200" alt=""><br>';
+                    echo 'Price : ' . $row[2] . "<br>";
+                    echo 'Choose No Of Book:
+                            <select name="book">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>';
+                    echo '<br><input type = "submit" class="button" value = "Buy Now">';
+                    echo '</form>';
+                    echo '</p> </td> </tr>';
+                }
+            }
+            ?>
+<!--                <tr>
                 <td align="middle"><img src="images/51ZV9E6VFTL.jpg" width="200" height="200" alt="">
                     <p align="middle"><font size="6" color="black">Gitanjali By R.N Tagore</font></p>
+                    <p align="middle"><font size="5" color="black">
+                        Product Price:
+                        <input type="text" name ="pro_price" required><br>
+                        <input type="hidden" name ="pro_id" value="<?php echo "3"; ?>"<br>
+                        Choose No Of Book:
+                        <select name="book">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        </font>
+                    </p>
                     <input type = "submit" class="button" value = "Buy Now"></td>
                 <td align="middle"><img src="images/51vyJmmazbL._SX322_BO1,204,203,200_.jpg" width="200" height="200" alt="">
                     <p align="middle"><font size="6" color="black">An Anthology By R.N Tagore</font></p>
@@ -57,12 +115,12 @@
                 <td align="middle"><img src="images/riddle_plays_rabindranath_tagores_originally_written_ihf044 - Copy.jpg" width="200" height="200" alt="">
                     <p align="middle"><font size="6" color="black">Riddle Plays By R.N Tagore</font></p>
                     <input type = "submit" class="button" value = "Buy Now"></td>		
-                <td align="middle"><img src="images/selected_writings_for_children__rabindranath_tagore_idc620.jpg" width="200" height="200" alt="">
+    <td align="middle"><img src="images/selected_writings_for_children__rabindranath_tagore_idc620.jpg" width="200" height="200" alt="">
                     <p align="middle"><font size="6" color="black">Selected Writing for Children</font></p>
                     <input type = "submit" class="button" value = "Buy Now"></td>
-            </tr>
+            </tr>-->
         </table>
     </fieldset>
-    </form>
+
 </body>
 </html>
