@@ -3,21 +3,25 @@
     <head>
         <title>store@online</title>
     </head>
-    <body bgcolor = "#289002" text = "white">
+    <body bgcolor = "#E6E6FA" text = "blue">
         <h1><marquee behavior = "alternate">STORE@ONLINE</marquee></h1>
         <form action = "login.php" method = "post">
             <fieldset>
+                <p align="middle"><font size="5" color="black">
                 User Name:<br>
                 <input type="text" name ="u_name" required><br>
                 Password:<br>  
                 <input type="password" name ="password" required><br>
                 <input type = "submit" value = "Log In"><br>
                 <a href="passrecovery.html">Forget Password!</a>
+                </font>
+                </p>
             </fieldset>
         </form>
         <form action = "register.php" method = "post">
-            <fieldset>
-                <h3> Create an account.. </h3><br>
+            <fieldset>  
+                <center><h1> Create an account.. </h1></center>
+                <p align="middle"><font size="5" color="black">
                 First Name:<br>
                 <input type="text" name ="f_name" required><br>
                 Surname:<br>  
@@ -110,8 +114,12 @@
                     <option value="1989">1989</option>
                 </select><br>
                 What Is Your Favorite Game:<br>
-                <input type="text" name ="sec_question" required><br><br>
+                <input type="text" name ="sec_question" required><br>
+                Enter Amount Add to Your Account:<br>
+                <input type="text" name ="ac_info" required><br>
                 <input type = "submit" value = "Create an account"><br>
+                </font>
+                </p>
             </fieldset>
         </form>
     </body>
