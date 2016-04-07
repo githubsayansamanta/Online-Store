@@ -33,7 +33,7 @@ session_start();
                 $_SESSION["u_id"] = $fieldinfo[2];
             } else {
                 echo "Not registered <br>";
-                 echo '<br> <a href="index.html" target="_blank">Want To Rigister</a>';
+                 echo '<br> <a href="index.html">Want To Rigister</a>';
             }
             ?></font></p></h3>
 

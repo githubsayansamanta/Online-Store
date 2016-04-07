@@ -2,8 +2,9 @@
     <head>
         <title>login</title>
     </head>
-    <body bgcolor = "#289002" text = "white">
+    <body bgcolor = "#E6E6FA" text = "blue">
     <center><h3><?php
+            echo '<p align="middle"><font size="5" color="black">';
             $db_host = "localhost";
             $db_user = "root";
             $db_password = "";
@@ -20,16 +21,18 @@
             if ($mypassword == $repassword) {
                 if ($count == 1) {
                     $sql = "UPDATE reg_data SET Password = '$mypassword' WHERE UserNameORMob = '$myusername'";
-                    if (mysqli_query($con, $sql)){
-                    echo '<br>Successfully Changed Password.';
-                }
+                    if (mysqli_query($con, $sql)) {
+                        echo '<br>Successfully Changed Password.';
+                    }
                 }
             } else {
                 echo "<br>Password Mismatched Try again!";
             }
             ?></h3>
-        <a href="index.html" target="_blank">Log In</a>
-    </body>
+        <a href="index.html">Log In</a>
+        </font>
+    </center>
+</body>
 </html>
 
 
