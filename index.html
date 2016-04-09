@@ -2,123 +2,128 @@
 <html>
     <head>
         <title>store@online</title>
+        <script src="scripts/validate.js"></script>
     </head>
     <body bgcolor = "#E6E6FA" text = "blue">
         <h1><marquee behavior = "alternate">STORE@ONLINE</marquee></h1>
         <form action = "login.php" method = "post">
             <fieldset>
-                <p align="middle"><font size="5" color="black">
-                User Name:<br>
-                <input type="text" name ="u_name" required><br>
-                Password:<br>  
-                <input type="password" name ="password" required><br>
-                <input type = "submit" value = "Log In"><br>
-                <a href="passrecovery.html">Forget Password!</a>
-                </font>
+                <p align="left"><font size="5" color="black">
+                    User Name:<br>
+                    <input type="text" name ="u_name" required><br>
+                    Password:<br>  
+                    <input type="password" name ="password" required><br>
+                    <input type = "submit" value = "Log In"><br>
+                    <a href="passrecovery.html">Forget Password!</a>
+                    </font>
                 </p>
             </fieldset>
         </form>
-        <form action = "register.php" method = "post">
+
+        <form name ="reg_form" action = "register.php" onsubmit="return validate()" method = "post">
+
             <fieldset>  
                 <center><h1> Create an account.. </h1></center>
-                <p align="middle"><font size="5" color="black">
-                First Name:<br>
-                <input type="text" name ="f_name" required><br>
-                Surname:<br>  
-                <input type="text" name ="s_name" required><br>
-                User ID Or Mobile No:<br>
-                <input type="text" name ="u_id" required><br>
-                New Password:<br>  
-                <input type="text" name ="n_passwd" required><br>
-                Re-Enter Password:<br>  
-                <input type="text" name ="re_passwd" required><br>
-                Email:<br>
-                <input type = "text" name = "mail_id" required><br>
-                Gender:<br>
-                <input type = "radio" name = "gender" value = "male" checked> Male<br>
-                <input type = "radio" name = "gender" value = "female"> Female<br>
-                <input type = "radio" name = "gender" value = "other"> Other<br>
-                Date Of Birth:<br>
-                <select name="month">
-                    <option value="na">Month</option>
-                    <option value="1">January</option>
-                    <option value="2">February</option>
-                    <option value="3">March</option>
-                    <option value="4">April</option>
-                    <option value="5">May</option>
-                    <option value="6">June</option>
-                    <option value="7">July</option>
-                    <option value="8">August</option>
-                    <option value="9">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                </select>
-                <select name="day">
-                    <option value="na">Day</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="17">17</option>
-                    <option value="18">18</option>
-                    <option value="19">19</option>
-                    <option value="20">20</option>
-                    <option value="21">21</option>
-                    <option value="22">22</option>
-                    <option value="23">23</option>
-                    <option value="24">24</option>
-                    <option value="25">25</option>
-                    <option value="26">26</option>
-                    <option value="27">27</option>
-                    <option value="28">28</option>
-                    <option value="29">29</option>
-                    <option value="30">30</option>
-                    <option value="31">31</option>
-                </select>
+                <p align="left"><font size="5" color="black">
+                    First Name:
+                    <input type="text" name ="f_name" required><br>
+                    Surname:  
+                    <input type="text" name ="s_name" required><br>
+                    User ID Or Mobile No:
+                    <input type="text" name ="u_id" required><br>
+                    New Password:
+                    <input type="text" name ="n_passwd" required><br>
+                    Re-Enter Password:
+                    <input type="text" name ="re_passwd" onblur="check_pass()" required><br>
 
-                <select name="year">
-                    <option value="na">Year</option>
-                    <option value="2009">2009</option>
-                    <option value="2008">2008</option>
-                    <option value="2007">2007</option>
-                    <option value="2006">2006</option>
-                    <option value="2005">2005</option>
-                    <option value="2004">2004</option>
-                    <option value="2003">2003</option>
-                    <option value="2002">2002</option>
-                    <option value="2001">2001</option>
-                    <option value="2000">2000</option>
-                    <option value="1999">1999</option>
-                    <option value="1998">1998</option>
-                    <option value="1997">1997</option>
-                    <option value="1996">1996</option>
-                    <option value="1995">1995</option>
-                    <option value="1994">1994</option>
-                    <option value="1993">1993</option>
-                    <option value="1992">1992</option>
-                    <option value="1991">1991</option>
-                    <option value="1990">1990</option>
-                    <option value="1989">1989</option>
-                </select><br>
-                What Is Your Favorite Game:<br>
-                <input type="text" name ="sec_question" required><br>
-                Enter Amount Add to Your Account:<br>
-                <input type="text" name ="ac_info" required><br>
-                <input type = "submit" value = "Create an account"><br>
-                </font>
+                    Email:
+                    <input type = "text" name = "mail_id" required><br>
+                    Gender:
+                    <input type = "radio" name = "gender" value = "male" checked> Male<br>
+                    <input type = "radio" name = "gender" value = "female"> Female<br>
+                    <input type = "radio" name = "gender" value = "other"> Other<br>
+                    Date Of Birth:
+                    <select name="month">
+                        <option value="na">Month</option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    <select name="day">
+                        <option value="na">Day</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
+
+                    <select name="year">
+                        <option value="na">Year</option>
+                        <option value="2009">2009</option>
+                        <option value="2008">2008</option>
+                        <option value="2007">2007</option>
+                        <option value="2006">2006</option>
+                        <option value="2005">2005</option>
+                        <option value="2004">2004</option>
+                        <option value="2003">2003</option>
+                        <option value="2002">2002</option>
+                        <option value="2001">2001</option>
+                        <option value="2000">2000</option>
+                        <option value="1999">1999</option>
+                        <option value="1998">1998</option>
+                        <option value="1997">1997</option>
+                        <option value="1996">1996</option>
+                        <option value="1995">1995</option>
+                        <option value="1994">1994</option>
+                        <option value="1993">1993</option>
+                        <option value="1992">1992</option>
+                        <option value="1991">1991</option>
+                        <option value="1990">1990</option>
+                        <option value="1989">1989</option>
+                    </select><br>
+                    What Is Your Favorite Game:
+                    <input type="text" name ="sec_question" required><br>
+                    Enter Amount Add to Your Account:
+                    <input type="text" name ="ac_info" onblur ="check_balance()" required><br>
+
+                    <input type = "submit" value = "Create an account"><br>
+                    </font>
                 </p>
             </fieldset>
         </form>
