@@ -6,30 +6,14 @@ session_start();
 <html>
     <head>
         <title>productbuy</title>
-        <style> 
-            body {
-                background: url("images/BS-motiv.png");
-                background-size: 400px 500px;
-                background-repeat: no-repeat;
-                padding-top: 40px;
-            }
-            .button {
-                background-color: blue;
-                border: none;
-                color: white;
-                padding: 15px 32px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                margin: 4px 2px;
-                cursor: pointer;
-            }
-        </style>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="mystyle.css">        
     </head>
     <body>
+        <table style= width:100%;>
+            <tr>
+                <td><h1><font size="10">R.N Tagore STORE@ONLINE </font></h1></td>
+            </tr>
+        </table>
         <?php
         $db_host = "localhost";
         $db_user = "root";
@@ -67,20 +51,20 @@ session_start();
         }
         ?>
 <!--<center><h3>
-        $db_host = "localhost";
-        $db_user = "root";
-        $db_password = "";
-        $DB_nm = "Online_Store";
+    $db_host = "localhost";
+    $db_user = "root";
+    $db_password = "";
+    $DB_nm = "Online_Store";
 
-        //create connection
-        $con = mysqli_connect($db_host, $db_user, $db_password, $DB_nm);
-        $price = mysqli_real_escape_string($con, $_POST['pro_price']);
-        $sql = "SELECT * from product_info where product_id = '$' and pro_name = '$'";
-        $result = mysqli_query($con, $sql);
-        //$count = mysqli_num_rows($ret);
-        $fieldinfo = mysqli_fetch_row($result);
-        printf("<br>%s", $fieldinfo[2]);
-        ?></h3>-->
+    //create connection
+    $con = mysqli_connect($db_host, $db_user, $db_password, $DB_nm);
+    $price = mysqli_real_escape_string($con, $_POST['pro_price']);
+    $sql = "SELECT * from product_info where product_id = '$' and pro_name = '$'";
+    $result = mysqli_query($con, $sql);
+    //$count = mysqli_num_rows($ret);
+    $fieldinfo = mysqli_fetch_row($result);
+    printf("<br>%s", $fieldinfo[2]);
+    ?></h3>-->
     </body>
 </head>
 </html>

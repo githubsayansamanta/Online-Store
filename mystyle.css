@@ -1,0 +1,24 @@
+
+body{
+    background-color: #dfe3ee;
+    background-image: url("http://www.tamba.co.uk/assets/img/bg-darkblue.jpg");
+    background-repeat:repeat-x;
+    background-size: auto 130px;
+    /*background-image: url("images/bgimage.jpg");*/
+}
+h1 {
+    color: White;
+    margin-top: 5px; 
+    /*line-height: 50pt;*/
+    font-family: calibri;
+    font-style: italic;
+    text-align: left;
+} 
+.button {
+    background-color: #59983b;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+}

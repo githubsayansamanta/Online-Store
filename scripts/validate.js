@@ -25,4 +25,7 @@ function validate() {
         return false;
     }
 }
+function add_cart() {
+    alert("Item Added to Cart!");
+}
 
