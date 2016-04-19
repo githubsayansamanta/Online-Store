@@ -54,9 +54,11 @@ session_start();
                 }
             }
             echo '<td>Balance Due:' . $total . "</td>";
+            echo '<br> <a href="productview.php"><h2 style="color: black;margin-top: 35px">Back To Product Store</h2></a>';
+            echo '</table>';
+            echo '<form action="productbuy.php" method="post">';
+            echo '<input type="hidden" name ="total" value = "' . $total . '">';
+            echo '<input type = "submit" class="button" value = "Pay Now">';
             ?>
-            <br> <a href="productview.php"><h2 style="color: black;margin-top: 35px">Back To Product Store</h2></a>
-        </table>
-        <input type = "submit" class="button" value = "Pay Now">
     </body>
 </html>

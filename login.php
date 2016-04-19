@@ -18,8 +18,10 @@ $_SESSION["cart"] = array();
                 $DB_nm = "Online_Store";
 //create connection
                 $con = mysqli_connect($db_host, $db_user, $db_password, $DB_nm);
-                $myusername = mysqli_real_escape_string($con, $_POST['u_name']);
-                $mypassword = mysqli_real_escape_string($con, $_POST['password']);
+                $uid = (isset($_SESSION["u_id"]) ? $_SESSION["u_id"]:$_POST['u_name']);
+                $passwd = (isset($_SESSION["passwd"]) ? $_SESSION["passwd"]:$_POST['password']);
+                $myusername = mysqli_real_escape_string($con, $uid);
+                $mypassword = mysqli_real_escape_string($con, $passwd);
                 $sql = "SELECT * from reg_data where UserNameORMob = '$myusername' and Password = '$mypassword'";
                 $ret = mysqli_query($con, $sql);
                 $count = mysqli_num_rows($ret);
@@ -32,6 +34,7 @@ $_SESSION["cart"] = array();
                     echo '<br><a href="productview.php" style ="color:white"><font size="3">product stored.</font></a>';
                     echo '<br><a href="index.html" style ="color:white"><font size="3">Log Out</font></a>';
                     $_SESSION["u_id"] = $fieldinfo[2];
+                    $_SESSION["passwd"] = $fieldinfo[7];
                 } else {
                     echo "Not registered <br>";
                     echo '<br> <a href="index.html" style ="color:white">Want To Rigister.</a>';
