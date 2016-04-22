@@ -10,23 +10,28 @@ session_start();
         <style>
             div.img {
                 margin: 5px;
-                border: 1px solid #ccc;
+                border: 1px solid black;
                 float: left;
                 width: 300px;
             }
 
-            div.img:hover {
-                border: 1px solid #777;
-            }
+            /*            div.img:hover {
+                            border: 1px solid #777;
+                        }*/
 
             div.img img {
-                width: 100%;
-                height: auto;
+                width: 300px;
+                height: 300px;
             }
 
             div.desc {
-                padding: 15px;
+                padding: 10px;
                 text-align: center;
+            }
+            div.head {
+                padding: 8px;
+                text-align: center;
+                font: 20px calibri;
             }
         </style>
     </head>
@@ -36,6 +41,7 @@ session_start();
                 <td><h1><font size="10">R.N Tagore STORE@ONLINE </font></h1></td>
             </tr>
         </table>
+        <br> <a href="shoppingcart.php"><h3 style="color: black;margin-top: 30px">Go To Cart.</h3></a>
         <table cellpadding="10" cellspacing="10" style="width:100%">
             <?php
             $db_host = "localhost";
@@ -48,44 +54,36 @@ session_start();
             $result = mysqli_query($con, $sql);
             if ($result) {
                 while ($row = mysqli_fetch_row($result)) {
-//                    echo '<form action = "" method = "post">';
-//                    echo '<tr> <td> <p align="middle"><font size="5" color="black">';
-//                    echo '<input type="hidden" name ="pro_id" value = "' . $row[0] . '">';
-//                    echo 'Book Name : ' . $row[1] . "<br>";
-//                    echo '<img src="' . $row[4] . '" width="200" height="200" alt=""><br>';
-//                    echo 'Price : ' . $row[2] . "<br>";
-//                    echo 'Choose No Of Book:
-//                            <select name="pro_cnt">
-//                                <option value="1">1</option>
-//                                <option value="2">2</option>
-//                                <option value="3">3</option>
-//                                <option value="4">4</option>
-//                                <option value="5">5</option>
-//                                <option value="6">6</option>
-//                                <option value="7">7</option>
-//                                <option value="8">8</option>
-//                                <option value="9">9</option>
-//                                <option value="10">10</option>
-//                            </select>';
-//                    echo '<br><input type = "submit" class="button" name="submitbutton" value = "Add To Cart">';
-//                    echo '</form>';
-//                    echo '</p> </td> </tr>';
                     echo
                     '<div class="img">
-                    <img src="http://www.w3schools.com/css/img_fjords.jpg" alt="Fjords" width="300" height="200">
-                    <div class="desc">Add a description of the image here</div>
+                        <div class="head">' . $row[1] . '</div>
+                        <img src="' . $row[4] . '">
+                        <div class="desc">
+                            Price : ' . $row[2] . '
+                            <form action="" method="post">
+                                <select name="pro_cnt">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                                <input type="hidden" name="pro_id" value="' . $row[0] . '">
+                                <input type="submit" class="button" name="button" value="Add To Cart">
+                            </form>
+                        </div>
                     </div>';
                 }
             }
 //            Associative Array  intialized
-            if (isset($_POST["submitbutton"])) {
+            if (isset($_POST["button"])) {
                 $p_id = $_POST["pro_id"];
                 $p_cnt = $_POST["pro_cnt"];
                 echo $p_id;
                 $_SESSION["cart"][$p_id] += $p_cnt;
             }
             ?>
-            <br> <a href="shoppingcart.php"><h3 style="color: black;margin-top: 35px">Go To Cart.</h3></a>
         </table>
+
     </body>
 </html>
