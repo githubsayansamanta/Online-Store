@@ -15,22 +15,50 @@ session_start();
             </tr>
         </table>
         <?php
+        // connect to database
         $db_host = "localhost";
         $db_user = "root";
         $db_password = "";
         $DB_nm = "Online_Store";
-        //create connection
         $con = mysqli_connect($db_host, $db_user, $db_password, $DB_nm);
+        // Fetch user balance from user id
         $uid = mysqli_real_escape_string($con, $_SESSION["u_id"]);
         $sql = "select * from reg_data where UserNameORMob = '$uid'";
         $result = mysqli_query($con, $sql);
         $row1 = mysqli_fetch_row($result);
-        echo '<form action = "login.php" method = "post" style=margin-top:35px;>';
-        echo '<p align="middle"><font size="5" color="black">';
+        echo '<p style=margin-top:50px; align="middle"><font size="5" color="black">';
         echo 'Previous Balance in Your A/C :' . $row1[8] . "<br>";
         $total = $_POST["total"];
-        echo 'Total Price:' . $total . "<br>";
-        if ($row1[8] >= $total) {
+        if ($row1[8] >= $total) { // if user has sufficient balance
+            // Display invoice
+            echo '<fieldset>';
+            echo '<table style="width: 50%" align="center">';
+            echo '<h2 style="text-align:center">Invoice</h2>';
+            echo '<hr width="50%">';
+            $sql = "select * from product_info";
+            $result = mysqli_query($con, $sql);
+            if ($result) {
+                while ($row = mysqli_fetch_row($result)) {
+                    $count = $_SESSION["cart"][$row[0]];
+                    if ($count > 0) {
+                        echo '<tr>';
+                        echo '<td align="left">' . $row[1] . '</td>';
+                        echo '<td align="right">' . $row[2] . ' x ' .
+                        $count . ' = ' . ($row[2] * $count) . '</td>';
+                        echo '</tr>';
+                    }
+                }
+            }
+            echo '</table>';
+            echo '<hr width="50%">';
+            echo '<table style="width: 50%" align="center">';
+            echo '<tr>';
+            echo '<td align="left"><b>Total:</b></td>';
+            echo '<td align="right"><b>' . $total . '</b></td>';
+            echo '</tr>';
+            echo '</table>';
+            echo '</fieldset>';
+            // Update user balance
             $finalAC = mysqli_real_escape_string($con, ($row1[8] - $total));
             $sql = "update reg_data set AC_info = '$finalAC' where usernameormob = '$uid'";
             $result = mysqli_query($con, $sql);
@@ -41,9 +69,9 @@ session_start();
         $result = mysqli_query($con, $sql);
         $row3 = mysqli_fetch_row($result);
         echo 'Current Balance in Your A/C :' . $row3[8] . "<br>";
-        echo '<br><input type = "submit" class = "button" value = "Thank You"></td>
-        </font>
-        </p></form>';
+        echo '<form action = "login.php" method = "post">';
+        echo '<br><input type = "submit" class = "button" value = "Thank You"></td></form>';
+        echo '</font></p>';
         ?>
     </body>
 </head>

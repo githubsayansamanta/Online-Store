@@ -29,7 +29,7 @@
                 echo "<br>Password Mismatched Try again!";
             }
             ?></h3>
-        <a href="index.html">Log In</a>
+        <a href="index.php">Log In</a>
         </font>
     </center>
 </body>

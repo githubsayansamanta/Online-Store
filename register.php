@@ -54,7 +54,7 @@
             //close connection
             mysqli_close($con);
             ?>
-            <br><a href="index.html">Want to Log In</a>
+            <br><a href="index.php">Want to Log In</a>
         </h2>
     </body>
 </html>
