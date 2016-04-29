@@ -29,14 +29,6 @@
             // concate the variable
             $dob = mysqli_real_escape_string($con, $dob_m . $dob_d . $dob_y);
             $finalAC = mysqli_real_escape_string($con, $_POST["ac_info"]);
-//        echo $f_name;
-//        echo $s_name;
-//        echo $u_name;
-//        echo $n_passwd;
-//        echo $re_passwd;
-//        echo $email;
-//        echo $sex;
-//        echo $dob;
             $sq_quetion = mysqli_real_escape_string($con, $_POST["sec_question"]);
             if ($n_passwd == $re_passwd) {
                 $sql = "insert into reg_data values('$f_name', '$s_name', '$u_name', '$email','$sex','$dob', '$sq_quetion', '$n_passwd','$finalAC')";
@@ -50,8 +42,23 @@
             } else {
                 echo "<br> New Password Mismatched with Confirm Password!" . mysqli_error($con);
             }
-
-            //close connection
+//            File Upload...
+            $target_dir = "images/";
+            $file=$_POST[fileToUpload];
+            $target_file = $target_dir . basename($_FILES["$file"]["name"]);
+            $uploadOk = 1;
+            $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+// Check if image file is a actual image or fake image
+            if (isset($_POST["submit"])) {
+                $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                if ($check !== false) {
+                    echo "File is an image - " . $check["mime"] . ".";
+                    $uploadOk = 1;
+                } else {
+                    echo "File is not an image.";
+                    $uploadOk = 0;
+                }
+            }
             mysqli_close($con);
             ?>
             <br><a href="index.php">Want to Log In</a>

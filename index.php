@@ -9,60 +9,83 @@ session_destroy();
         <script src="scripts/validate.js"></script>
         <link rel="stylesheet" type="text/css" href="mystyle.css">
         <style> 
-            #a,#b,#c,#d{
-                width: 18%;
-                padding: 12px 20px;
-                border: 2px solid blueviolet;
+            div.logo{
+                margin-top:5px;
+                float: left;
+                width: 560px;
             }
-            input[type=text]{
-                width: 40%;
-                padding: 12px 20px;
-                margin: 8px 0;
-                border: 2px solid blueviolet;
+            div.login{
+                margin-top:3px;
+                float: right;
+                width: 500px;
             }
-            input[type=submit]{
-                width: 15%;
-                padding: 12px 20px;
-                margin: 8px 0;
-                border: 2px solid blueviolet;
+            div.register {
+                margin-top: 30px;
+                margin-left: 400px;
+                float: right;
+                width: 500px;
+            }
+
+            input[type=text],[type=password],[type=file]{
+                width: 400px;
+                padding: 8px;
+                margin-bottom: 5px;
+                border: 2px solid aqua;
+                border-radius: 5px;
+            }
+            input[type=submit] {
                 background-color: #59983b;
-                color: White;
+                color: white;
+                padding: 6px 18px;
+                text-align: center;
+                font-size: 16px;
+                margin: 4px 2px;
+            }
+            #a,#c {
+                width: 180px;
+                margin-right: 15px;
+            }
+            #b,#d{
+                width: 180px;
+            }
+            #e,#f,#g{
+                width: 88px;
+                padding: 8px;
+                margin-bottom: 5px;
+                border: 2px solid aqua;
+                border-radius: 5px;
             }
         </style>
     </head>
     <body>
-        <table style= width:100%;>
-            <tr>
-                <td><h1><font size="10">R.N Tagore STORE@ONLINE </font></h1></td>
-                <td>
-                    <form action = "login.php" method = "post">
-                        <p align="right"><font size="5">
-                            <input type="text" id="a" placeholder="User Id" name ="u_name" required>
-                            <input type="password" id ="b" placeholder="Password" name ="password" required>
-                            <input type = "submit" value = "Log In"><br>
-                            <a href="passrecovery.html"><font size="5" color="white" >Forget Password!</font></a>
-                            </font>
-                        </p>
-                    </form>
-                </td>
-            </tr>
-        </table>
+        <div class="logo">
+            <h1><font size="10">R.N Tagore STORE@ONLINE </font></h1>
+        </div>
+        <form action = "login.php" method = "post">
+            <div class="login">
+                <input type="text" id="a" placeholder="User Id" name ="u_name" required>
+                <input type="password" id ="b" placeholder="Password" name ="password" required><br>
+                <input type = "submit" value = "Log In"><br>
+                <a href="passrecovery.html"><font size="5" color="white" >Forget Password!</font></a>
+            </div>
+        </form>
         <form name ="reg_form" action = "register.php" onsubmit="return validate()" method = "post">
-            <!--<p align="left"><font size="5" color="black"></font>-->
-            <h2 style="margin-left: 60%;"><font size="10"> Create an account.. </font></h2>
-            <p align="right"><font size="5" color="black">
+            <div class="register">
+                <h3><font size="6"><b> Create an account.. </b></font></h3>
                 <input type="text" id ="c" name ="f_name" placeholder="First Name" required>
                 <input type="text" id ="d" name ="s_name" placeholder="Surname" required><br>
                 <input type = "text" name = "mail_id" placeholder="Valid Mail ID" required><br>
                 <input type="text" name ="u_id" placeholder="User Name or Mobile" required><br>
                 <input type="text" name ="n_passwd" placeholder="New Password" required><br>
-                <input type="text" name ="re_passwd" placeholder="Re-enter Password" onblur="check_pass()" required><br>
-                Gender:
-                <input type = "radio" name = "gender" value = "male" checked> Male
-                <input type = "radio" name = "gender" value = "female"> Female
-                <input type = "radio" name = "gender" value = "other"> Other<br>
+                <input type="text" name ="re_passwd" placeholder="Re-enter Password" onblur="check_pass()" required><br></td>
+
+                <p><font size=5>Gender:
+                    <input type = "radio" name = "gender" value = "male" checked> Male
+                    <input type = "radio" name = "gender" value = "female"> Female
+                    <input type = "radio" name = "gender" value = "other"> Other<br>
+                </p>
                 Date Of Birth:
-                <select  name="month">
+                <select id="e" name="month">
                     <option value="na">Month</option>
                     <option value="1">January</option>
                     <option value="2">February</option>
@@ -77,7 +100,7 @@ session_destroy();
                     <option value="11">November</option>
                     <option value="12">December</option>
                 </select>
-                <select  name="day">
+                <select id="f" name="day">
                     <option value="na">Day</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -111,7 +134,7 @@ session_destroy();
                     <option value="30">30</option>
                     <option value="31">31</option>
                 </select>
-                <select name="year">
+                <select id="g" name="year">
                     <option value="na">Year</option>
                     <option value="2009">2009</option>
                     <option value="2008">2008</option>
@@ -137,9 +160,9 @@ session_destroy();
                 </select><br>
                 <input type="text" name ="sec_question" placeholder="What Is Your Favorite Game" required><br>
                 <input type="text" name ="ac_info" placeholder="Enter Amount Add to Your Account" onblur ="check_balance()" required><br>
+                <input type="file" name="fileToUpload" id="fileToUpload">
                 <input type = "submit" value = "Create an account"><br>
-                </font>
-            </p>
+            </div>
         </form>
     </body>
 </html>

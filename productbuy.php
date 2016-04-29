@@ -37,6 +37,8 @@ session_start();
             echo '<hr width="50%">';
             $sql = "select * from product_info";
             $result = mysqli_query($con, $sql);
+            $myfile = fopen("invoice.txt", "w");
+            fwrite($myfile,"\t\t"."Invoice"."\n\n\n");
             if ($result) {
                 while ($row = mysqli_fetch_row($result)) {
                     $count = $_SESSION["cart"][$row[0]];
@@ -46,9 +48,12 @@ session_start();
                         echo '<td align="right">' . $row[2] . ' x ' .
                         $count . ' = ' . ($row[2] * $count) . '</td>';
                         echo '</tr>';
+                        fwrite($myfile, $row[1] ."\t\t\t". $row[2] .'x'. $count .'='.
+                                $row[2] * $count ."\n");
                     }
                 }
             }
+            fclose($myfile);
             echo '</table>';
             echo '<hr width="50%">';
             echo '<table style="width: 50%" align="center">';
@@ -57,6 +62,7 @@ session_start();
             echo '<td align="right"><b>' . $total . '</b></td>';
             echo '</tr>';
             echo '</table>';
+            echo '<h1 style="text-align:right"><a href = "invoice.txt" ><b>Download Invoice</b></a></h1>';
             echo '</fieldset>';
             // Update user balance
             $finalAC = mysqli_real_escape_string($con, ($row1[8] - $total));
