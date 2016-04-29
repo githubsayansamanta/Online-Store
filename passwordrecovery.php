@@ -8,7 +8,7 @@
             $db_host = "localhost";
             $db_user = "root";
             $db_password = "";
-            $DB_nm = "Online_Store";
+            $DB_nm = "online_store";
             //create connection
             $con = mysqli_connect($db_host, $db_user, $db_password, $DB_nm);
             $myusername = mysqli_real_escape_string($con, $_POST['u_name']);

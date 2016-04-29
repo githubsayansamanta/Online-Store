@@ -19,7 +19,7 @@ session_start();
             $db_host = "localhost";
             $db_user = "root";
             $db_password = "";
-            $DB_nm = "Online_Store";
+            $DB_nm = "online_store";
             $total = 0;
             //create connection
             $con = mysqli_connect($db_host, $db_user, $db_password, $DB_nm);
